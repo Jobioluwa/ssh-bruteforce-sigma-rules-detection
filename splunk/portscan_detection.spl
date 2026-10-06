@@ -1,0 +1,6 @@
+# Basic keyword match (direct Sigma-to-SPL conversion)
+"SYN"
+# Threshold-based detection (distinct destination ports per source IP)
+index=detection_lab sourcetype=portscan
+| stats dc(dest_port) as unique_ports by src_ip
+| where unique_ports > 20

@@ -1,0 +1,22 @@
+title: TCP SYN Port Scan Detection
+id: d78ab38a-e38e-4c50-8e9b-0cf139c81994
+status: experimental
+description: Detects potential TCP SYN port scanning activity against a host
+author: Oluwatoyin Egunjobi
+date: "2026-10-06"
+references:
+    - https://attack.mitre.org/tecniques/t1046/
+tags:
+    - attack.discovery
+    - attack.t1046
+logsource:
+    category: network_connection
+detection:
+    keywords:
+      - SYN
+    condition: keywords
+falsepositives:
+    - Vulnerability scanners
+    - Network monitoring tools
+    - Authorized security assessments
+level: medium

@@ -1,0 +1,8 @@
+# Basic keyword match (direct Sigma-to-SPL conversion)
+"*Failed password for*"
+
+# Threshold-based detection (production-style)
+index=detection_lab "*Failed password for*"
+| rex field=_raw "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| stats count by src_ip
+| where count >= 5

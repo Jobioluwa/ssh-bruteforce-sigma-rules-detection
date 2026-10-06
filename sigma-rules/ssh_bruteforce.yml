@@ -1,0 +1,22 @@
+title: SSH BRUTE Force - Multiple Failed Logins Followed by Success
+id: 85189575-a480-41c1-a3cc-573af73a53a1
+status: experimental
+description: Detects multiple failed SSH Login attempts from the same source, with a brute force attack
+references:
+         - https://attack.mitre.org/techniques/T1110/001/
+author: Oluwatoyin Egunjobi
+date: 2026-10-03
+tags:
+     - attack.t1110
+     - attack.t1110.001
+logsource:
+     product: linux
+     service: auth
+detection:
+     keywords_failed:
+         '|contains': 'Failed password for'
+     condition: keywords_failed
+falsepositives:
+     - Legitimate user mistyping their password
+     - Automated scripts with incorrect credentials
+level: medium
